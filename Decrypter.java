@@ -22,16 +22,16 @@ public class Decrypter {
         
         @Override
         public int compare(CharCounter c1, CharCounter c2) {
-            Integer c1Count = c1.getCount();
-            Integer c2Count = c2.getCount();
-            return c2Count.compareTo(c1Count);
+            Integer c1Count = c1.getCount();  // why are you using Integer instead of int?
+            Integer c2Count = c2.getCount();  // to get an int comparison, you just subtract the ints
+            return c2Count.compareTo(c1Count);  // so this can be shortened to `return c1.getCount() - c2.getCount()`
         }
     };
     
     public Decrypter (){
         message = "";
-        frequencies = CharacterFrequency.chars;
-        Collections.sort(frequencies, charCountCompare);
+        frequencies = CharacterFrequency.chars;  // this should be passed in, not accessed statically
+        Collections.sort(frequencies, charCountCompare);  // this could be made into a function of the custom list (then you can move the comparator to where it's more cohesive)
         List<Character> encrypt = new ArrayList<Character>();
         for(int i=0; i<frequencies.size(); i++){
             encrypt.add(frequencies.get(i).getChar());

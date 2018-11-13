@@ -11,14 +11,15 @@ package characterfrequency;
  */
 public class CharCounter {
     private char character;
-    private int count =0;
-    private int index;
+    private int count =0;   // Move this 0 assignment to the primary constructor
+    private int index;  
+    //Add empty lines around methods
     public CharCounter(char character, int index){
         this.character = character;
         this.index = index;
     }
     public CharCounter(char character){
-        this.character = character;
+        this.character = character;     // you have a "primary" constructor (one that takes all of the parameters of the others), so you should use that instead of duplicating assignments
         this.index = character;
     }
     public CharCounter(int index){
